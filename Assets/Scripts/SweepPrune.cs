@@ -21,6 +21,9 @@ public class SweepPrune : MonoBehaviour {
     public List<Pair> Reported;
 	// Use this for initialization
 	void Start () {
+        AxisList = new List<AABB>();
+        ActiveList = new List<AABB>();
+        Reported = new List<Pair>();
         AxisList.Add(FindObjectOfType<AABB>());
         AxisList.Sort((a, b) => a.min.x.CompareTo(b.min.x));
         ActiveList.Add(AxisList[0]);
@@ -29,10 +32,11 @@ public class SweepPrune : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        var current = ActiveList[0];
-        for (int i = 1; i < AxisList.Count; i++)
+        
+        for (int i = 0; i < AxisList.Count - 1; i++)
         {
-            var newItem = AxisList[i];     
+            var current = ActiveList[i];
+            var newItem = AxisList[i+1];     
             if(newItem.min.x > current.min.x)
             {
                 ActiveList.Remove(current);
@@ -41,9 +45,9 @@ public class SweepPrune : MonoBehaviour {
             {
                 ActiveList.Add(newItem);
                 Reported.Add(new Pair(current, newItem));
-                current = newItem;
             }
         }
+        Debug.Log(Reported.Count);
 	}
 
 

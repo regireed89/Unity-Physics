@@ -3,22 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CollisionTest : MonoBehaviour {
-
+    public AABB aabb;
+    public UnityEngine.Vector2 size;
     // Use this for initialization
     void Start() {
-        ScriptableObject aabb = ScriptableObject.CreateInstance("AABB");
-        //var bob = new AABB();  
-        //var mary = new AABB();
+        aabb = ScriptableObject.CreateInstance<AABB>();
+        aabb.Initialize(size.x, size.y, transform);
+    }
 
-        //bob.max = new Vector2(8,10);
-        //bob.min = new Vector2(5,3);
-
-        //mary.max = new Vector2(6,9);
-        //mary.min = new Vector2(3,2);
-
-
-        //if (Utilities.TestOverlap(bob, mary))
-        //    Debug.Log("Hello World");
+    private void Update()
+    {
+        aabb.UpdateAabb(size.x, size.y);
+        
     }
 
 }
