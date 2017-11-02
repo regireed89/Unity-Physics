@@ -14,12 +14,6 @@ public class Vector2
     }
 }
 
-public class AABB
-{
-    public Vector2 min;
-    public Vector2 max;
-}
-
 public static class Utilities
 {
     public static bool TestOverlap(AABB a, AABB b)
