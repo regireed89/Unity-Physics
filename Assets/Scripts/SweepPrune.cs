@@ -65,6 +65,31 @@ public class SweepPrune : MonoBehaviour
             ActiveList.Clear();
             ActiveList.AddRange(tempList);
         }
+
+        for (int i = 0; i < AxisList.Count - 1; i++)
+        {
+
+            var tempList = new List<AABB>();
+            if (ActiveList.Count == 0)
+                ActiveList.Add(AxisList[i]);
+            tempList.AddRange(ActiveList);
+            var newItem = AxisList[i + 1];
+            //var current = ActiveList[i];
+            foreach (var item in ActiveList)
+            {
+                if (newItem.min.y > item.max.y)
+                {
+                    tempList.Remove(item);
+                }
+                else
+                {
+                    tempList.Add(newItem);
+                    Reported.Add(new Pair(item, newItem));
+                }
+            }
+            ActiveList.Clear();
+            ActiveList.AddRange(tempList);
+        }
     }
 
 
