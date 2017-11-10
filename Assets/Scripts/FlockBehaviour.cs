@@ -3,20 +3,60 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Regi
-{
-
-    public class FlockBehaviour : MonoBehaviour
+{ 
+    public interface IFlockable
     {
+        Vector3 Dispersion(Boids b);
+        Vector3 Cohesion(Boids b);
+        Vector3 Alignment(Boids b);
+    }
 
-        // Use this for initialization
-        void Start() {
-
+    public class FlockBehaviour : MonoBehaviour, IFlockable
+    {
+        public Vector3 Alignment(Boids bj)
+        {
+            var flock = AgentFactory.agents;
+            Vector3 pv = new Vector3();
+            foreach (var b in flock)
+                if (b != bj)
+                    pv = pv + b.velocity;
+            pv = pv / (flock.Count - 1);
+            return (pv - bj.velocity) / 8;
         }
 
-        // Update is called once per frame
-        void Update() {
-            
-    
+        public Vector3 Cohesion(Boids bj)
+        {
+            var flock = AgentFactory.agents;
+            Vector3 c = Vector3.zero;
+            foreach(var b in flock)
+            {
+                if (b != bj)
+                    if ((b.position - bj.position).magnitude < 100)
+                        c = c - (b.position - bj.position);
+            }
+            return c;
+        }
+
+        public Vector3 Dispersion(Boids bj)
+        {
+            var flock = AgentFactory.agents;
+            var seperation = Vector3.zero;
+            foreach (var b in flock)
+            {
+                if (b != bj)
+                    seperation = seperation + b.position;
+            }
+            seperation = seperation / (flock.Count - 1);
+
+            return (seperation - bj.position) / 100;
+        }
+
+        public static List<Boids> Neighbors(Boids boid)
+        {
+            var neighbors = new List<Boids>();
+            var agents = AgentFactory.agents.FindAll(x => Vector3.Distance(x.position, boid.position) < 5);
+            agents.ForEach(a => neighbors.Add(a as Boids));
+            return neighbors;
         }
     }
 }

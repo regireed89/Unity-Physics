@@ -4,14 +4,11 @@ using UnityEngine;
 
 namespace Regi
 {
-    public class AgentFactory : MonoBehaviour {
 
-        public int Count;
-        public List<Agent> agents;
-        public List<AgentBehavior> agentBehaviours;
-        private List<GameObject> gameobjects;
 
-        public static Vector3 RandomVector
+    public class Utility
+    {
+        public static Vector3 RandomVector3
         {
             get
             {
@@ -21,28 +18,38 @@ namespace Regi
 
                 var neww = new Vector3(x, y, z);
                 if (neww.magnitude == 0)
-                    neww = RandomVector;
+                    neww = RandomVector3;
 
                 return neww;
             }
-            
         }
-        
+    }
 
+    public class AgentFactory : MonoBehaviour
+    {
+
+        public int Count;
+        public static List<Agent> agents;
+        public static List<AgentBehavior> agentBehaviours;
+        private List<GameObject> gameobjects;
 
         [ContextMenu("Create")]
         public void Create()
         {
+            
             agents = new List<Agent>();
             agentBehaviours = new List<AgentBehavior>();
             for (int i = 0; i < Count; i++)
             {
-                var go = new GameObject();
-                var boid = ScriptableObject.CreateInstance<Boids>();
+                var go = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                go.transform.SetParent(transform);
+                go.name = string.Format("{0} {1}", "Agent: ", i);
 
                 //this would be a specific component type
                 //ie: Boid Particle Spring etc
                 var behaviour = go.AddComponent<BoidBehavior>();
+                var boid = ScriptableObject.CreateInstance<Boids>();
+                boid.name = go.name;
 
                 agents.Add(boid);
                 agentBehaviours.Add(behaviour);
@@ -51,8 +58,7 @@ namespace Regi
         }
 
         [ContextMenu("Destroy")]
-
-        public void OnDestroy()
+        public void Destroy()
         {
             foreach (var behaviours in agentBehaviours)
                 DestroyImmediate(behaviours.gameObject);
