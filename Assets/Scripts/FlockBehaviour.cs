@@ -15,7 +15,10 @@ namespace Regi
     {
         public Vector3 Alignment(Boids bj)
         {
-            var flock = AgentFactory.agents;
+
+            var flock = Neighbors(bj);
+            if (flock.Count <= 1)
+                return Vector3.zero;
             Vector3 pv = new Vector3();
             foreach (var b in flock)
                 if (b != bj)
@@ -24,9 +27,9 @@ namespace Regi
             return (pv - bj.velocity) / 8;
         }
 
-        public Vector3 Cohesion(Boids bj)
+        public Vector3 Dispersion(Boids bj)
         {
-            var flock = AgentFactory.agents;
+            var flock = Neighbors(bj);
             Vector3 c = Vector3.zero;
             foreach(var b in flock)
             {
@@ -37,9 +40,9 @@ namespace Regi
             return c;
         }
 
-        public Vector3 Dispersion(Boids bj)
+        public Vector3 Cohesion(Boids bj)
         {
-            var flock = AgentFactory.agents;
+            var flock = Neighbors(bj);
             var seperation = Vector3.zero;
             foreach (var b in flock)
             {

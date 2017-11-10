@@ -6,11 +6,19 @@ namespace Regi
 {
     public class BoidBehavior : AgentBehavior
     {
-        public float SFac;
+        private FlockBehaviour fb;
+        public float DFac;
+        public float CFac;
+        public float AFac;
+        public void Start()
+        {
+            fb = new FlockBehaviour();
+        }
         public Boids boid
         {
             get { return (Boids)agent; }
         }
+
         public void setBoid(Boids b)
         {
             agent = b;
@@ -23,15 +31,20 @@ namespace Regi
             var dist = Vector3.Distance(transform.position, Vector3.zero);
             if (dist > 15f)
             {
-                GetComponent<MeshRenderer>().material.color = Random.ColorHSV();
                 boundary = dist * (Vector3.zero - transform.position);
             }
+            
+            agent.Add_Force(boundary.magnitude, boundary.normalized);
 
-            foreach(var b in AgentFactory.agents)
-            {
-                agent.Add_Force(boundary.magnitude, boundary.normalized);
-                agent.Add_Force(IFlockable.Dispersion(b).magnitude, IFlockable.Dispersion(b));
-            }   
+            var v1 = fb.Dispersion(boid);
+            var v2 = fb.Cohesion(boid);
+            var v3 = fb.Alignment(boid);
+
+            
+            agent.Add_Force(DFac, v1.normalized);
+            Debug.DrawLine(agent.position, agent.position + agent.velocity);
+            agent.Add_Force(CFac, v2.normalized);
+            agent.Add_Force(AFac, v3.normalized);
         }
 
         // Update is called once per frame

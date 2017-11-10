@@ -42,7 +42,9 @@ namespace Regi
             for (int i = 0; i < Count; i++)
             {
                 var go = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+
                 go.transform.SetParent(transform);
+                go.transform.position = new Vector3(Random.Range(-15, 15), Random.Range(-15, 15), Random.Range(-15, 15));
                 go.name = string.Format("{0} {1}", "Agent: ", i);
 
                 //this would be a specific component type
