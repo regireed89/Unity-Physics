@@ -7,6 +7,7 @@ namespace Regi
     public class BoidBehavior : AgentBehavior
     {
         private FlockBehaviour fb;
+        
         public float DFac;
         public float CFac;
         public float AFac;

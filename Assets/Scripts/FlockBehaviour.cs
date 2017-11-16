@@ -15,7 +15,6 @@ namespace Regi
     {
         public Vector3 Alignment(Boids bj)
         {
-
             var flock = Neighbors(bj);
             if (flock.Count <= 1)
                 return Vector3.zero;
@@ -34,7 +33,7 @@ namespace Regi
             foreach(var b in flock)
             {
                 if (b != bj)
-                    if ((b.position - bj.position).magnitude < 100)
+                    if ((b.position - bj.position).magnitude < 10)
                         c = c - (b.position - bj.position);
             }
             return c;
@@ -50,7 +49,6 @@ namespace Regi
                     seperation = seperation + b.position;
             }
             seperation = seperation / (flock.Count - 1);
-
             return (seperation - bj.position) / 100;
         }
 

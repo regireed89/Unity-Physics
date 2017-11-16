@@ -29,6 +29,7 @@ namespace Regi
     {
 
         public int Count;
+       // public GameObject G;
         public static List<Agent> agents;
         public static List<AgentBehavior> agentBehaviours;
         private List<GameObject> gameobjects;
@@ -41,6 +42,7 @@ namespace Regi
             agentBehaviours = new List<AgentBehavior>();
             for (int i = 0; i < Count; i++)
             {
+                 
                 var go = GameObject.CreatePrimitive(PrimitiveType.Sphere);
 
                 go.transform.SetParent(transform);
