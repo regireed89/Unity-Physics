@@ -34,19 +34,19 @@ namespace Regi
             {
                 boundary = dist * (Vector3.zero - transform.position);
             }
-            
+
             agent.Add_Force(boundary.magnitude, boundary.normalized);
 
             var v1 = fb.Dispersion(boid);
             var v2 = fb.Cohesion(boid);
             var v3 = fb.Alignment(boid);
 
-            
+
             agent.Add_Force(DFac, v1.normalized);
-            Debug.DrawLine(agent.position, agent.position + agent.velocity);
             agent.Add_Force(CFac, v2.normalized);
             agent.Add_Force(AFac, v3.normalized);
         }
+
 
         // Update is called once per frame
         void LateUpdate()
