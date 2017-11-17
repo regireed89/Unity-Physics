@@ -34,6 +34,7 @@ namespace Regi
         public static List<AgentBehavior> agentBehaviours;
         private List<GameObject> gameobjects;
 
+
         [ContextMenu("Create")]
         public void Create()
         {
