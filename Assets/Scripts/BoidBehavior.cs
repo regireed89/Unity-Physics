@@ -7,11 +7,17 @@ namespace Regi
     public class BoidBehavior : AgentBehavior
     {
         private FlockBehaviour fb;
-
+        public void Start()
+        {
+            fb = new FlockBehaviour();
+        }
+        [Range(0,50)]
         public float DFac;
+        [Range(0,50)]
         public float CFac;
+        [Range(0,50)]
         public float AFac;
- 
+
         public Boids boid
         {
             get { return (Boids)agent; }
@@ -34,15 +40,19 @@ namespace Regi
 
             agent.Add_Force(boundary.magnitude, boundary.normalized);
 
-            var v1 = fb.Dispersion(boid);
             var v2 = fb.Cohesion(boid);
             var v3 = fb.Alignment(boid);
 
-            agent.Add_Force(DFac, v1.normalized);
             agent.Add_Force(CFac, v2.normalized);
             agent.Add_Force(AFac, v3.normalized);
         }
 
+        public void D(float value)
+        {
+            var v1 = fb.Dispersion(boid);
+            agent.Add_Force(DFac, v1.normalized);
+
+        }
 
         // Update is called once per frame
         void LateUpdate()

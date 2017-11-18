@@ -12,9 +12,9 @@ namespace Regi
         {
             get
             {
-                var x = UnityEngine.Random.Range(-1, 1);
-                var y = UnityEngine.Random.Range(-1, 1);
-                var z = UnityEngine.Random.Range(-1, 1);
+                var x = Random.Range(-1, 1);
+                var y = Random.Range(-1, 1);
+                var z = Random.Range(-1, 1);
 
                 var neww = new Vector3(x, y, z);
                 if (neww.magnitude == 0)
@@ -27,12 +27,17 @@ namespace Regi
 
     public class AgentFactory : MonoBehaviour
     {
-
-        public int Count;
-       // public GameObject G;
+         
+        public int Count;  
+        // public GameObject G;
         public static List<Agent> agents;
         public static List<AgentBehavior> agentBehaviours;
         private List<GameObject> gameobjects;
+        FlockBehaviour fb;
+        public void Start()
+        {
+            fb = new FlockBehaviour();
+        }
 
 
         [ContextMenu("Create")]
@@ -43,7 +48,7 @@ namespace Regi
             agentBehaviours = new List<AgentBehavior>();
             for (int i = 0; i < Count; i++)
             {
-                 
+
                 var go = GameObject.CreatePrimitive(PrimitiveType.Sphere);
 
                 go.transform.SetParent(transform);
@@ -55,7 +60,7 @@ namespace Regi
                 var behaviour = go.AddComponent<BoidBehavior>();
                 var boid = ScriptableObject.CreateInstance<Boids>();
                 boid.name = go.name;
-
+                
                 agents.Add(boid);
                 agentBehaviours.Add(behaviour);
                 behaviour.setBoid(boid);

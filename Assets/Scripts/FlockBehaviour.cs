@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Regi
-{ 
+{
     public interface IFlockable
     {
         Vector3 Dispersion(Boids b);
@@ -30,7 +30,7 @@ namespace Regi
         {
             var flock = Neighbors(bj);
             Vector3 c = Vector3.zero;
-            foreach(var b in flock)
+            foreach (var b in flock)
             {
                 if (b != bj)
                     if ((b.position - bj.position).magnitude < 10)
