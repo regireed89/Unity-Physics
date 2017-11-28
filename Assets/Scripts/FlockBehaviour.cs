@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace Regi
-{ 
+{
     public interface IFlockable
     {
         Vector3 Dispersion(Boids b);
@@ -20,7 +20,6 @@ namespace Regi
         public Slider Afac;
         public Vector3 Alignment(Boids bj)
         {
-
             var flock = Neighbors(bj);
             if (flock.Count <= 1)
                 return Vector3.zero;
@@ -36,10 +35,10 @@ namespace Regi
         {
             var flock = Neighbors(bj);
             Vector3 c = Vector3.zero;
-            foreach(var b in flock)
+            foreach (var b in flock)
             {
                 if (b != bj)
-                    if ((b.position - bj.position).magnitude < 100)
+                    if ((b.position - bj.position).magnitude < 10)
                         c = c - (b.position - bj.position);
             }
             return c;
@@ -55,7 +54,6 @@ namespace Regi
                     seperation = seperation + b.position;
             }
             seperation = seperation / (flock.Count - 1);
-
             return (seperation - bj.position) / 100;
         }
 
