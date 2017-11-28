@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Regi
 { 
@@ -13,6 +14,10 @@ namespace Regi
 
     public class FlockBehaviour : MonoBehaviour, IFlockable
     {
+
+        public Slider Dfac;
+        public Slider Cfac;
+        public Slider Afac;
         public Vector3 Alignment(Boids bj)
         {
 

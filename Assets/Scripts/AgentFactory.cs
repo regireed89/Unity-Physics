@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Regi
 {
@@ -27,7 +28,6 @@ namespace Regi
 
     public class AgentFactory : MonoBehaviour
     {
-
         public int Count;
         public static List<Agent> agents;
         public static List<AgentBehavior> agentBehaviours;
