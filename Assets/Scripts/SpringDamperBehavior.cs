@@ -22,14 +22,13 @@ namespace HookesLaw
         }
         public void Spring()
         {
-            var dif = p1.particle.position - p2.particle.position;
-            var length = dif.magnitude;
-            Vector3 v = new Vector3(length, 0, 0);
+            var direction = (p1.particle.position - p2.particle.position);
+            
+            
            
             var f = -springDamper.Ks * springDamper.Lo;
 
-            p1.particle.AddForce(v);
-            p2.particle.AddForce(v);
+           
         }
     }
 }
