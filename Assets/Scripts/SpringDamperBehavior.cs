@@ -23,7 +23,7 @@ namespace HookesLaw
         public void Spring()
         {
             var direction = (p1.particle.position - p2.particle.position);
-            
+            var length = direction.magnitude;
             
            
             var f = -springDamper.Ks * springDamper.Lo;
