@@ -14,7 +14,6 @@ namespace HookesLaw
             acceleration = Vector3.zero;
             velocity = Vector3.zero;
             position = Vector3.zero;
-
         }
         public Particle(Vector3 p, Vector3 v, float m)
         {
@@ -32,6 +31,10 @@ namespace HookesLaw
         public float mass;
         [SerializeField]
         public Vector3 force;
+        [SerializeField]
+        public bool IsGravity;
+        [SerializeField]
+        public bool IsAnchor;
 
         public void AddForce(Vector3 f)
         {
@@ -40,9 +43,14 @@ namespace HookesLaw
 
         public Vector3 Update(float deltatime)
         {
+            if(IsGravity == true)            
+                AddForce(new Vector3(0,-9.81f,0));
+      
+                
             acceleration = force / mass;
             velocity += acceleration * deltatime;
             position += velocity * deltatime;
+            force = Vector3.zero;
             return position;
         }
     }
@@ -54,17 +62,19 @@ namespace HookesLaw
         [SerializeField]
         public float Ks;//spring constant
         [SerializeField]
+        public float Kd;
+        [SerializeField]
         public float Lo;//rest length
         
         public SpringDamper() { }
-        public SpringDamper(Particle p1, Particle p2, float springConstant, float restLength)
+        public SpringDamper(Particle p1, Particle p2, float springConstant,float dampingFactor, float restLength)
         {
             _p1 = p1;
             _p2 = p2;
             Ks = springConstant;
+            Kd = dampingFactor;
             Lo = restLength;
         }
     }
-
 }
 
