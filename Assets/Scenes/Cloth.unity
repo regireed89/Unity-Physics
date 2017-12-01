@@ -195,8 +195,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 839057826}
-  - component: {fileID: 839057825}
   - component: {fileID: 839057827}
+  - component: {fileID: 839057825}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -215,8 +215,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f71d8afb41601e46a7cad71a91433a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  p1: {fileID: 0}
-  p2: {fileID: 0}
+  sd:
+    _p1:
+      position: {x: 0, y: 0, z: 0}
+      velocity: {x: 0, y: 0, z: 0}
+      acceleration: {x: 0, y: 0, z: 0}
+      mass: 1
+      force: {x: 0, y: 0, z: 0}
+      IsGravity: 0
+      IsAnchor: 0
+    _p2:
+      position: {x: 0, y: 0, z: 0}
+      velocity: {x: 0, y: 0, z: 0}
+      acceleration: {x: 0, y: 0, z: 0}
+      mass: 1
+      force: {x: 0, y: 0, z: 0}
+      IsGravity: 0
+      IsAnchor: 0
+    Ks: 0
+    Kd: 0
+    Lo: 0
+  particles: []
 --- !u!4 &839057826
 Transform:
   m_ObjectHideFlags: 0

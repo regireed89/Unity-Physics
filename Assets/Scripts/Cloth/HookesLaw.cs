@@ -43,8 +43,10 @@ namespace HookesLaw
 
         public Vector3 Update(float deltatime)
         {
-            if(IsGravity == true)            
+            if(IsGravity)            
                 AddForce(new Vector3(0,-9.81f,0));
+            if (IsAnchor)
+                return position;
       
                 
             acceleration = force / mass;
@@ -77,21 +79,21 @@ namespace HookesLaw
         }
         public void ComputeForce()
         {
-            var e = _p2.position - _p1.position;
+            var e = this._p2.position - this._p1.position;
             var length = e.magnitude;
             var _e = e / length;
 
-            var V1 = _p1.velocity;
-            var V2 = _p2.velocity;
+            var V1 = this._p1.velocity;
+            var V2 = this._p2.velocity;
             var v1 = Vector3.Dot(_e, V1);
             var v2 = Vector3.Dot(_e, V2);
 
             var f = -Ks * (Lo - length) - Kd * (v1 - v2);
             var f1 = f * _e;
             var f2 = -f1;
-            _p1.AddForce(f1);
-            Debug.DrawLine(_p1.position, _p2.position);
-            _p2.AddForce(f2);
+            this._p1.AddForce(f1);
+            Debug.DrawLine(this._p1.position, this._p2.position);
+            this._p2.AddForce(f2);
 
         }
     }

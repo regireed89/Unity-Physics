@@ -10,8 +10,8 @@ namespace HookesLaw
         public Vector2 mapSize;
         public float outLinePercent;
 
-        void Start() 
-        { 
+        void Start()
+        {
             string holderName = "Generated Map";
             if (transform.Find(holderName))
             {
@@ -23,21 +23,29 @@ namespace HookesLaw
             {
                 for (int j = 0; j < mapSize.y; j++)
                 {
-                    Vector3 tilePosition = new Vector3(-mapSize.x / 2 + 0.5f + i, 0, -mapSize.y / 2 + 0.5f + j);
-                   GameObject p = Instantiate(obj, new Vector3(i, j, 7), Quaternion.identity);
+                    GameObject p = Instantiate(obj, new Vector3(i, j, 7), Quaternion.identity);
                     p.transform.localScale = Vector3.one * (1 - outLinePercent);
                     p.AddComponent<ParticleBehavior>();
                     gameObject.GetComponent<SpringDamperBehavior>().particles.Add(p.GetComponent<ParticleBehavior>());
                 }
             }
-
-
-
+            ConnectDampers();
         }
         // Update is called once per frame
         void Update()
         {
 
+        }
+
+        void ConnectDampers()
+        {
+            var part = GetComponent<SpringDamperBehavior>();
+            for (int i = 0; i == part.particles.Count - 2; i++)
+            {
+                part.sd._p1 = part.particles[i].particle;
+                part.sd._p2 = part.particles[i++].particle;
+
+            }
         }
 
     }
