@@ -6,24 +6,39 @@ namespace HookesLaw
 {
     public class GenerateParticleGrid : MonoBehaviour
     {
+        public GameObject obj;
+        public Vector2 mapSize;
+        public float outLinePercent;
 
-        public Vector2 mapsize;
-        // Use this for initialization
-        void Start()
-        {
+        void Start() 
+        { 
+            string holderName = "Generated Map";
+            if (transform.Find(holderName))
+            {
+                DestroyImmediate(transform.Find(holderName).gameObject, false);
+            }
+            Transform mapHolder = new GameObject(holderName).transform;
+            mapHolder.parent = transform;
+            for (int i = 0; i < mapSize.x; i++)
+            {
+                for (int j = 0; j < mapSize.y; j++)
+                {
+                    Vector3 tilePosition = new Vector3(-mapSize.x / 2 + 0.5f + i, 0, -mapSize.y / 2 + 0.5f + j);
+                   GameObject p = Instantiate(obj, new Vector3(i, j, 7), Quaternion.identity);
+                    p.transform.localScale = Vector3.one * (1 - outLinePercent);
+                    p.AddComponent<ParticleBehavior>();
+                    gameObject.GetComponent<SpringDamperBehavior>().particles.Add(p.GetComponent<ParticleBehavior>());
+                }
+            }
+
+
 
         }
-
         // Update is called once per frame
         void Update()
         {
-            for(int i = 0; i < mapsize.x; i++)
-            {
-                for(int j = 0; j < mapsize.y; j++)
-                {
 
-                }
-            }
         }
+
     }
 }
