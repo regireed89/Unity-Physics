@@ -39,10 +39,10 @@ namespace HookesLaw
 
         void ApplyDampers()
         {
-            var pb = GetComponent<SpringDamperBehavior>();
+            var sb = GetComponent<SpringDamperBehavior>();
             for (int i = 0; i <= mapSize.x; i++)
             {               
-                pb.sd = new SpringDamper(pb.particles[i].particle, pb.particles[i++].particle, 10, .3f, 5);   
+                sb.sd = new SpringDamper(sb.particles[i].particle, sb.particles[i++].particle, 10, .3f, 5);   
             }
         }
       
