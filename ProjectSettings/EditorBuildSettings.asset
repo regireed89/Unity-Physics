@@ -6,5 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Cloth.unity
+    guid: f778f20ffa0afff40a1f1da1f90d8d1c
+  - enabled: 0
     path: Assets/Scenes/Boids.unity
     guid: f6e47149bde914b4d9f7f99904453f42

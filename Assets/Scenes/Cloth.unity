@@ -232,9 +232,9 @@ MonoBehaviour:
       force: {x: 0, y: 0, z: 0}
       IsGravity: 0
       IsAnchor: 0
-    Ks: 0
-    Kd: 0
-    Lo: 0
+    Ks: 10
+    Kd: 0.3
+    Lo: 5
   particles: []
 --- !u!4 &839057826
 Transform:

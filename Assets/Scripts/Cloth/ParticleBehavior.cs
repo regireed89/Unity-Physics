@@ -13,6 +13,7 @@ namespace HookesLaw
         void Awake()
         {
             particle = new Particle(transform.position, Vector3.zero, 1);
+
         }
 
         // Update is called once per frame
@@ -20,6 +21,7 @@ namespace HookesLaw
         {
             transform.position = particle.Update(Time.fixedDeltaTime);
         }
+        
 
         void OnMouseDrag()
         {

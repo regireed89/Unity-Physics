@@ -10,7 +10,7 @@ namespace HookesLaw
         public Vector2 mapSize;
         public float outLinePercent;
 
-        void Start()
+        void Awake()
         {
             string holderName = "Generated Map";
             if (transform.Find(holderName))
@@ -29,7 +29,7 @@ namespace HookesLaw
                     gameObject.GetComponent<SpringDamperBehavior>().particles.Add(p.GetComponent<ParticleBehavior>());
                 }
             }
-            ConnectDampers();
+            ApplyDampers();
         }
         // Update is called once per frame
         void Update()
@@ -37,16 +37,14 @@ namespace HookesLaw
 
         }
 
-        void ConnectDampers()
+        void ApplyDampers()
         {
-            var part = GetComponent<SpringDamperBehavior>();
-            for (int i = 0; i == part.particles.Count - 2; i++)
-            {
-                part.sd._p1 = part.particles[i].particle;
-                part.sd._p2 = part.particles[i++].particle;
-
+            var pb = GetComponent<SpringDamperBehavior>();
+            for (int i = 0; i <= mapSize.x; i++)
+            {               
+                pb.sd = new SpringDamper(pb.particles[i].particle, pb.particles[i++].particle, 10, .3f, 5);   
             }
         }
-
+      
     }
 }

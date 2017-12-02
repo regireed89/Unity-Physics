@@ -10,10 +10,16 @@ namespace HookesLaw
         [SerializeField]
         public List<ParticleBehavior> particles;
 
+        public void Start()
+        {
+
+        }
         // Update is called once per frame
         void Update()
         {
             sd.ComputeForce();
         }
+
+
     }
 }
