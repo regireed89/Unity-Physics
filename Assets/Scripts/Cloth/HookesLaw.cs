@@ -92,8 +92,9 @@ namespace HookesLaw
             var f1 = f * _e;
             var f2 = -f1;
             this._p1.AddForce(f1);
-            Debug.DrawLine(this._p1.position, this._p2.position);
             this._p2.AddForce(f2);
+            Debug.DrawLine(_p1.position, _p2.position);
+           
 
         }
     }

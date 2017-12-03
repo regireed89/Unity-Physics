@@ -10,7 +10,7 @@ namespace HookesLaw
         [SerializeField]
         public Particle particle;
         // Use this for initialization
-        void Awake()
+        void Start()
         {
             particle = new Particle(transform.position, Vector3.zero, 1);
 
