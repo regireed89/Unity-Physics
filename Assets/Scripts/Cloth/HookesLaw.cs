@@ -43,12 +43,12 @@ namespace HookesLaw
 
         public Vector3 Update(float deltatime)
         {
-            if(IsGravity)            
-                AddForce(new Vector3(0,-9.81f,0));
+            if (IsGravity)
+                AddForce(new Vector3(0, -9.81f, 0));
             if (IsAnchor)
                 return position;
-      
-                
+
+
             acceleration = force / mass;
             velocity += acceleration * deltatime;
             position += velocity * deltatime;
@@ -67,9 +67,9 @@ namespace HookesLaw
         public float Kd;
         [SerializeField]
         public float Lo;//rest length
-        
+
         public SpringDamper() { }
-        public SpringDamper(Particle p1, Particle p2, float springConstant,float dampingFactor, float restLength)
+        public SpringDamper(Particle p1, Particle p2, float springConstant, float dampingFactor, float restLength)
         {
             _p1 = p1;
             _p2 = p2;
@@ -94,7 +94,6 @@ namespace HookesLaw
             this._p1.AddForce(f1);
             this._p2.AddForce(f2);
             Debug.DrawLine(_p1.position, _p2.position);
-           
 
         }
     }

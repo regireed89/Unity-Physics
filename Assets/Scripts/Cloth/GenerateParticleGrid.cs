@@ -12,25 +12,22 @@ namespace HookesLaw
 
         void Awake()
         {
-            //for (int i = 0; i < mapSize.x; i++)
-            //{
-            //    for (int j = 0; j < mapSize.y; j++)
-            //    {
-            //        GameObject p = Instantiate(obj, new Vector3(i, j, 7), Quaternion.identity);
-            //        p.transform.localScale = Vector3.one * (1 - outLinePercent);
-            //        p.AddComponent<ParticleBehavior>();
-            //        //gameObject.GetComponent<SpringDamperBehavior>().particles.Add(p.GetComponent<ParticleBehavior>());
-            //    }
-            //}
-            
+            for (int i = 0; i < mapSize.x; i++)
+            {
+                for (int j = 0; j < mapSize.y; j++)
+                {
+                    GameObject p = Instantiate(obj, new Vector3(i, j, 7), Quaternion.identity);
+                    p.transform.localScale = Vector3.one * (1 - outLinePercent);
+                    p.AddComponent<ParticleBehavior>();
+                    p.GetComponent<ParticleBehavior>().particle = new Particle(p.transform.position, Vector3.zero, 1);
+                    gameObject.GetComponent<SpringDamperBehavior>().particles.Add(p.GetComponent<ParticleBehavior>());
+                }
+            }
         }
         // Update is called once per frame
         void Update()
         {
 
         }
-
-      
-      
     }
 }
