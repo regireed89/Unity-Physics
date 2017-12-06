@@ -7,14 +7,14 @@ namespace HookesLaw
     public class GenerateParticleGrid : MonoBehaviour
     {
         public GameObject obj;
-        public Vector2 mapSize;
+        public int mapSize;
         public float outLinePercent;
 
         void Awake()
         {
-            for (int i = 0; i < mapSize.x; i++)
+            for (int i = 0; i < mapSize; i++)
             {
-                for (int j = 0; j < mapSize.y; j++)
+                for (int j = 0; j < mapSize; j++)
                 {
                     GameObject p = Instantiate(obj, new Vector3(i, j, 7), Quaternion.identity);
                     p.transform.localScale = Vector3.one * (1 - outLinePercent);

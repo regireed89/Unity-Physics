@@ -17,23 +17,24 @@ namespace HookesLaw
             map = GetComponent<GenerateParticleGrid>();
             Particle p1;
             Particle p2;
-            for (int i = 0; i <= particles.Count - 1; i++)
+            for (int i = 0; i < particles.Count - 1; i++)
             {
                 p1 = particles[i].particle;
                 p2 = particles[i + 1].particle;
-                if (!(i != 0 && (i + 1) % map.mapSize.x == 0))
+                if (!(i != 0 && (i + 1) % map.mapSize == 0))
                 {
                     ApplyDampers(p1, p2);
                 }
             }
+
             for (int i = 0; i <= particles.Count - 1; i++)
             {
                 p1 = particles[i].particle;
-                p2 = particles[i + map.mapSize.y].particle;
-                if (!(i != 0 && (i + 1) % map.mapSize.y == 0))
-                {
-                    ApplyDampers(p1, p2);
-                }
+                p2 = particles[i + (int)map.mapSize].particle;
+                if (p2 == null)
+                    return;
+
+                ApplyDampers(p1, p2);
             }
         }
 
