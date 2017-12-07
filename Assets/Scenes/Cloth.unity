@@ -215,6 +215,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f71d8afb41601e46a7cad71a91433a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  KS: 4.5
+  KD: 0.3
+  LO: 2
   particles: []
   springDampers: []
 --- !u!4 &839057826
@@ -242,9 +245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj: {fileID: 1816462850}
-  mapSize:
-    x: 5
-    y: 6
+  mapSize: 5
   outLinePercent: 0.5
 --- !u!1 &1514986995
 GameObject:

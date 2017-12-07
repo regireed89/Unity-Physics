@@ -77,8 +77,11 @@ namespace HookesLaw
             Kd = dampingFactor;
             Lo = restLength;
         }
-        public void ComputeForce()
+        public void ComputeForce(float ks, float kd, float lo)
         {
+            Ks = ks;
+            Kd = kd;
+            Lo = lo;
             var e = this._p2.position - this._p1.position;
             var length = e.magnitude;
             var _e = e / length;
