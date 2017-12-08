@@ -12,6 +12,9 @@ namespace HookesLaw
 
         void Awake()
         {
+            gameObject.GetComponent<SpringDamperBehavior>().springDampers = new List<SpringDamper>();
+            gameObject.GetComponent<SpringDamperBehavior>().triangles = new List<Triangle>();
+            gameObject.GetComponent<SpringDamperBehavior>().bending = new List<SpringDamper>();
             for (int i = 0; i < mapSize; i++)
             {
                 for (int j = 0; j < mapSize; j++)
@@ -23,6 +26,11 @@ namespace HookesLaw
                     gameObject.GetComponent<SpringDamperBehavior>().particles.Add(p.GetComponent<ParticleBehavior>());
                 }
             }
+
+        }
+        private void Start()
+        {
+
         }
         // Update is called once per frame
         void Update()
