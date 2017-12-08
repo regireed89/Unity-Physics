@@ -21,6 +21,7 @@ namespace HookesLaw
         public Slider KsSlider;
         public Slider KdSlider;
         public Toggle Wind;
+        public Toggle Gravity;
         float KS, KD, LO;
         public Vector3 windForce;
         public void Start()
@@ -43,10 +44,7 @@ namespace HookesLaw
             foreach (SpringDamper s in springDampers)
                 s.ComputeForce(KS, KD, LO);
             foreach (SpringDamper b in bending)
-                b.ComputeForce(KS, KD, 4);
-
-
-
+                b.ComputeForce(KS, KD, 3);
 
             foreach (var t in triangles)
             {
@@ -55,7 +53,11 @@ namespace HookesLaw
                 if(Wind.isOn)
                     t.AerodynamicForce(windForce);
             }
-
+            foreach(ParticleBehavior p in particles)
+            {
+                if (Gravity.isOn)
+                    p.particle.IsGravity = true;
+            }
 
         }
         void ConnectDampers()
