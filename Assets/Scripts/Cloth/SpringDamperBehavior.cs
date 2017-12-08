@@ -7,6 +7,7 @@ namespace HookesLaw
     public class SpringDamperBehavior : MonoBehaviour
     {
         SpringDamper sD;
+        [SerializeField]
         public Triangle T;
         [Range(0, 10)]
         public float KS, KD, LO;
@@ -14,6 +15,7 @@ namespace HookesLaw
         [SerializeField]
         public List<ParticleBehavior> particles;
         public List<SpringDamper> springDampers;
+        [SerializeField]
         public List<Triangle> triangles;
         GenerateParticleGrid map;
 
@@ -23,6 +25,7 @@ namespace HookesLaw
             Particle p1;
             Particle p2;
             triangles = new List<Triangle>();
+            T = new Triangle();
             //Vertical
             for (int i = 0; i < particles.Count - 1; i++)
             {
@@ -89,15 +92,16 @@ namespace HookesLaw
 
             for (int i = 0; i < particles.Count - map.mapSize; i++)
             {
-                if (!(i != 0 && (i - 1) % map.mapSize == 0))
+                if (i + map.mapSize > particles.Count - 1 || i + map.mapSize + 1 > particles.Count - 1)
                     continue;
+
                 else
                 {
-                    triangles.Add(new HookesLaw.Triangle(particles[i].particle, particles[i + 1].particle, particles[i + map.mapSize].particle));
-
-                    triangles.Add(new HookesLaw.Triangle(particles[i].particle, particles[i + map.mapSize].particle, particles[i + map.mapSize + 1].particle));
+                    T = new HookesLaw.Triangle(particles[i].particle, particles[i + 1].particle, particles[i + map.mapSize].particle);
+                    triangles.Add(T);
+                    T = new HookesLaw.Triangle(particles[i].particle, particles[i + map.mapSize].particle, particles[i + map.mapSize + 1].particle);
+                    triangles.Add(T);
                 }
-                    
             }
         }
 
@@ -107,7 +111,7 @@ namespace HookesLaw
             foreach (SpringDamper s in springDampers)
                 s.ComputeForce(KS, KD, LO);
 
-            foreach (Triangle t in triangles)
+            foreach (var t in triangles)
                 t.AerodynamicForce(windForce);
         }
 
