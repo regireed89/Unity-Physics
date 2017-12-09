@@ -57,8 +57,8 @@ namespace HookesLaw
             {
                 if (Gravity.isOn)
                     p.particle.IsGravity = true;
-                if (p.particle.position.y <= -10)
-                    p.particle.position = new Vector3(p.particle.position.x, -9, p.particle.position.z);
+                if (p.particle.position.y <= -19)
+                    p.particle.position = new Vector3(p.particle.position.x, -19, p.particle.position.z);
             }
 
 

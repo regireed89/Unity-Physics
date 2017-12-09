@@ -1197,13 +1197,11 @@ MonoBehaviour:
   springDampers: []
   bending: []
   triangles: []
-  cursor: {fileID: 1816462850}
-  reset: {fileID: 169594035}
   KsSlider: {fileID: 668859111}
   KdSlider: {fileID: 1892271363}
   Wind: {fileID: 1857887207}
   Gravity: {fileID: 525814814}
-  windForce: {x: 0, y: 0, z: 2}
+  windForce: {x: 0, y: 0, z: 4}
 --- !u!4 &839057826
 Transform:
   m_ObjectHideFlags: 0
