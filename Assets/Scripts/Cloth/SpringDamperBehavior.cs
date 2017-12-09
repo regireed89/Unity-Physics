@@ -9,7 +9,7 @@ namespace HookesLaw
     {
         SpringDamper sD;
         Triangle T;
-       
+
 
         [HideInInspector]
         public List<ParticleBehavior> particles;
@@ -18,6 +18,7 @@ namespace HookesLaw
         public List<Triangle> triangles;
         GenerateParticleGrid map;
 
+        public Button reset;
         public Slider KsSlider;
         public Slider KdSlider;
         public Toggle Wind;
@@ -32,8 +33,7 @@ namespace HookesLaw
             ConnectBendingSprings();
             CreateTriangles();
             LO = 2;
-            KS = KsSlider.value;
-            KD = KdSlider.value;
+
 
 
         }
@@ -41,8 +41,11 @@ namespace HookesLaw
         // Update is called once per frame
         void Update()
         {
+            KS = KsSlider.value;
+            KD = KdSlider.value;
             foreach (SpringDamper s in springDampers)
                 s.ComputeForce(KS, KD, LO);
+            
             foreach (SpringDamper b in bending)
                 b.ComputeForce(KS, KD, 3);
 
@@ -50,10 +53,10 @@ namespace HookesLaw
             {
                 t.p = 8;
                 t.Cd = 3;
-                if(Wind.isOn)
+                if (Wind.isOn)
                     t.AerodynamicForce(windForce);
             }
-            foreach(ParticleBehavior p in particles)
+            foreach (ParticleBehavior p in particles)
             {
                 if (Gravity.isOn)
                     p.particle.IsGravity = true;
@@ -140,7 +143,7 @@ namespace HookesLaw
         }
         void ApplyBendingSpring(Particle part1, Particle part2)
         {
-            sD = new SpringDamper(part1, part2, 10, .3f, 4);
+            sD = new SpringDamper(part1, part2, 10, .3f, 5);
             bending.Add(sD);
         }
 
@@ -159,5 +162,7 @@ namespace HookesLaw
                 }
             }
         }
+
+
     }
 }

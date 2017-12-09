@@ -68,6 +68,7 @@ namespace HookesLaw
         [SerializeField]
         public float Lo;//rest length
 
+
         public SpringDamper() { }
         public SpringDamper(Particle p1, Particle p2, float springConstant, float dampingFactor, float restLength)
         {
