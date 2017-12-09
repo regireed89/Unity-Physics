@@ -18,7 +18,7 @@ namespace HookesLaw
         public List<Triangle> triangles;
         GenerateParticleGrid map;
 
-        public Button reset;
+       
         public Slider KsSlider;
         public Slider KdSlider;
         public Toggle Wind;
@@ -27,17 +27,14 @@ namespace HookesLaw
         public Vector3 windForce;
         public void Start()
         {
+
             map = GetComponent<GenerateParticleGrid>();
             T = new Triangle();
             ConnectDampers();
             ConnectBendingSprings();
             CreateTriangles();
             LO = 2;
-
-
-
         }
-
         // Update is called once per frame
         void Update()
         {
@@ -45,7 +42,7 @@ namespace HookesLaw
             KD = KdSlider.value;
             foreach (SpringDamper s in springDampers)
                 s.ComputeForce(KS, KD, LO);
-            
+
             foreach (SpringDamper b in bending)
                 b.ComputeForce(KS, KD, 3);
 
@@ -63,6 +60,7 @@ namespace HookesLaw
                 if (p.particle.position.y <= -10)
                     p.particle.position = new Vector3(p.particle.position.x, -9, p.particle.position.z);
             }
+
 
         }
         void ConnectDampers()
