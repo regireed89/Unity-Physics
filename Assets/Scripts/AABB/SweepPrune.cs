@@ -91,7 +91,4 @@ public class SweepPrune : MonoBehaviour
             ActiveList.AddRange(tempList);
         }
     }
-
-
-
 }

@@ -22,6 +22,7 @@ public class AABB : ScriptableObject {
         Name = owner.name;
         UpdateAabb();
     }
+
     public void UpdateAabb()
     {
         min.x = Owner.position.x;
@@ -51,4 +52,5 @@ public class AABB : ScriptableObject {
         Debug.DrawLine(br, tr, Color.cyan);
         Debug.DrawLine(tl, tr, Color.cyan);
     }
+
 }

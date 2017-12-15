@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Regi.Agent">
+    <Position X="0.5" Y="0.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AIgAAAiAAAAAAAIgEAAAIAAAAAAAAAQAAAQAAAAAEAA=</HashCode>
+      <FileName>Assets\Scripts\Boids\Agent.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Regi.AgentBehavior">
+    <Position X="4.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Boids\AgentBehavior.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Regi.Utility">
+    <Position X="4" Y="5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Boids\AgentFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Regi.AgentFactory">
+    <Position X="6.75" Y="5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAACAAAQAAIAAAAAQAAABAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Boids\AgentFactory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Regi.BoidBehavior">
+    <Position X="4" Y="2" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAChAAAAAAAAgIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Boids\BoidBehavior.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Regi.Boids">
+    <Position X="0.5" Y="4.5" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Boids\Boids.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Regi.FlockBehaviour">
+    <Position X="6.25" Y="2.25" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAEAAAACAAAAAAAAAAgACAIAAAAAAQAAA=</HashCode>
+      <FileName>Assets\Scripts\Boids\FlockBehaviour.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Regi.IFlockable">
+    <Position X="6.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAAAAAAAAACAAAAAAAAQAAA=</HashCode>
+      <FileName>Assets\Scripts\Boids\FlockBehaviour.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -21,6 +21,7 @@ namespace HookesLaw
             velocity = v;
             mass = m;
         }
+
         [SerializeField]
         public Vector3 position;
         [SerializeField]
