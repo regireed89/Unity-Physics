@@ -28,6 +28,7 @@ namespace Regi
 
     public class AgentFactory : MonoBehaviour
     {
+        public GameObject gob;
         public int Count;
         public static List<Agent> agents;
         public static List<AgentBehavior> agentBehaviours;
@@ -45,7 +46,7 @@ namespace Regi
             agentBehaviours = new List<AgentBehavior>();
             for (int i = 0; i < Count; i++)
             {
-                var go = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+                var go = Instantiate(gob);
                 go.GetComponent<Renderer>().material.color = Color.gray; 
                 go.transform.SetParent(transform);
                 go.transform.position = new Vector3(Random.Range(-15, 15), Random.Range(-15, 15), Random.Range(-15, 15));

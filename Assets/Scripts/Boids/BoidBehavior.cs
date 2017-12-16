@@ -27,7 +27,7 @@ namespace Regi
         {
             var boundary = Vector3.zero;
             var dist = Vector3.Distance(transform.position, Vector3.zero);
-            if (dist > 10f)
+            if (dist > 5f)
             {
                 boundary = dist * (Vector3.zero - transform.position);
             }
